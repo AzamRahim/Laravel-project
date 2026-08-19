@@ -29,4 +29,34 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class)->orderBy('order');
+    }
+
+    public function skills()
+    {
+        return $this->hasMany(Skill::class)->orderBy('order');
+    }
+
+    public function experiences()
+    {
+        return $this->hasMany(Experience::class)->orderBy('order');
+    }
+
+    public function education()
+    {
+        return $this->hasMany(Education::class)->orderBy('order');
+    }
+
+    public function socialLinks()
+    {
+        return $this->hasMany(SocialLink::class)->orderBy('order');
+    }
 }
