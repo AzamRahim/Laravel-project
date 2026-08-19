@@ -32,8 +32,14 @@ jobs:
 
       - run: cp .env.example .env
       - run: composer install --no-interaction --prefer-dist
-      
+
       - run: php artisan key:generate
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
 
       - run: php artisan migrate --force
 
